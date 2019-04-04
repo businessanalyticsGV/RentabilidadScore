@@ -28,6 +28,7 @@ print(np.unique(list(Base_Rent['Mix_NA_IN'])))
 
 Base_Rent_INT= Base_Rent[Base_Rent['Mix_NA_IN']=='IN']
 Base_Rent_NAT= Base_Rent[Base_Rent['Mix_NA_IN']!='IN']
+print('prueba')
 
 
 Base_Rent_INT.to_csv(path+'/BaseDatos/Base_Trabajo_INT.csv',index=False)
