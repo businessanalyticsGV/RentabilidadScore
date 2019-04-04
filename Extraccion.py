@@ -1,5 +1,8 @@
 import pandas as pd
 import numpy as np
+import os
+
+path = os.getcwd().replace('\\','/')
 
 Base_Rent = pd.read_csv('E:/Procesos Sense/Rentabilidad/RentTotalPBI_Prueba.txt')
 ##print(Base_Rent.columns)
@@ -27,5 +30,5 @@ Base_Rent_INT= Base_Rent[Base_Rent['Mix_NA_IN']=='IN']
 Base_Rent_NAT= Base_Rent[Base_Rent['Mix_NA_IN']!='IN']
 
 
-Base_Rent_INT.to_csv('Base_Trabajo_INT.csv',index=False)
-Base_Rent_NAT.to_csv('Base_Trabajo_NAT.csv',index=False)
+Base_Rent_INT.to_csv(path+'/BaseDatos/Base_Trabajo_INT.csv',index=False)
+Base_Rent_NAT.to_csv(path+'/BaseDatos/Base_Trabajo_NAT.csv',index=False)
