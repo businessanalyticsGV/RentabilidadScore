@@ -1,8 +1,10 @@
 #### 0.- PRELIMINARIES
 
+import os
 import pandas as pd
 pd.set_option('display.max_columns',500)
 
+path = os.getcwd().replace('\\','/')
 #### 1.- EXTRACCIÓN Y LIMPIEZA RAPIDA
 df = pd.read_csv('BaseDatos/Base_Trabajo_INT.csv')
 ls_index = ['ReservationNumber','Mix_canal']
@@ -19,4 +21,15 @@ for eg in ls_egresos:
 print(df.shape)
 print(df.head())
 
+print([(field,sum(pd.isnull(df[field]))) for field in df])
+
 #### II.- SCORING
+
+from TeamAM_Score import MemberScoring
+
+score = MemberScoring()
+
+df['scores'] = score.fit_score(df,cumulative_variance=.8)
+df['ReservationNumber'] = df_index['ReservationNumber']
+df['Mix_canal'] = df_index['Mix_canal']
+df.to_csv(path+'/Score/RentabilidadScore.csv', index = False)
